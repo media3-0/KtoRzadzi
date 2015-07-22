@@ -1,0 +1,113 @@
+
+  <!--start: Wrapper-->
+  <!-- start: Flexslider -->
+  <div id="homepage-slider" class="slider nogutter" style="margin-top: 20px;">
+    <div id="flex1" class="flexslider home">
+      <ul class="slides">
+
+        <% @highlights.each do |post| %>
+        <li>
+          <%= link_to post do %>
+            <%= image_tag(post.photo.file.url(:full)) %>
+          <% end %>
+          <div class="slide-caption n">
+            <%= link_to post do %>
+              <h3><%= post.title %></h3>
+            <% end %>
+            <p>
+              <%= post.lead %>
+            </p>
+            <p>
+              <%= render 'shared/show_photo_credit', photo: post.photo %>
+            </p>
+          </div>
+        </li>
+        <% end %>
+
+      </ul>
+    </div>
+  </div>
+  <!-- end: Flexslider -->
+  <!-- end: Wrapper  -->
+  
+<!--start: Wrapper-->
+<div id="wrapper" class="span8">
+
+  <div class="title article"><p>Najnowsze artykuły</p></div>
+
+  <!-- start: Portfolio -->
+  <div id="wall" class="row-fluid">
+
+    <% @posts.each do |post| %>
+      <%= render '/shared/show_post', :item => post, :width => 'span12', :frontpage => 'true' %>
+    <% end %>
+
+  </div>
+  
+  <!--start: row-fluid -->
+  <div class="row-fluid">
+  
+  
+  
+  </div>
+  <!--end: row-fluid -->
+
+  <!-- Botón Todos los Artículos
+  <div class="all-btn row-fluid">
+    <a href="#" title="Todos los Artículos">Wszystkie artykuły</a>
+  </div>
+  -->
+  <!-- end: Portfolio -->
+
+</div>
+
+<!-- end: Wrapper  -->
+ <!--start: Wrapper-->
+  <div id="homepage-lead" class="span4" style="">
+    
+    <h3>Przyłącz się</h3>
+    <p>Wyślij nam zdjęcia, które przedstawiają powiązania pomiędzy politykami a biznesem lub zaproponuj interesujące tematy, którymi powinniśmy się zająć.Napisz do nas na: <a href="mailto:kontakt@ktorzadzi.pl" style="font-weight:600; color:#fff;">kontakt@ktorzadzi.pl</a>.</p>
+    <p>Dodatkowo, <a href="http://media30.pl/kontakt/" target="_blank"><strong>możesz pomóc nam w śledzeniu powiązań oraz tworzeniu kolejnych narzędzi wspierając nas darowizną na rzecz fundacji.</strong></a></p>
+    <p><h3 style="margin-top:15px;"><a href="/posts/ktorzadzi#co-to-takiego">¿Co to takiego?</a></h3></p>
+    <p>
+      Ktorządzi.pl to mapa władzy w Polsce zbudowana i rozwijana przez <a href="http://www.media30.pl" target="_blank"><strong>Fundacja Media 3.0</strong></a> w celu: ukazania powiązań polityków i biznesu wynikających z oficjalnych baz danych instytucji publicznych. Wszystkie dane publikowane na tym serwisie są udokumentowane i możesz je sam zweryfikować.
+    </p>
+    <p>
+      Chcesz się dowiedzieć więcej: <a href="/posts/ktorzadzi#co-to-takiego">na temat ktorzadzi.pl?</a> <a href="/posts/ktorzadzi#jak-to-dziala">W jaki sposób powstał?</a> <a href="/posts/ktorzadzi#kto-za-tym-stoi">Kto za tym stoi?</a> I najważniejsze... <a href="/posts/ktorzadzi#dlaczego-to-robimy">dlaczego to robimy?</a>
+    </p>
+  </div>
+  <!-- end: Wrapper  -->
+
+
+<!--start: Wrapper-->
+
+<div  class="span12" id="wrapper">
+
+  <div class="title photo"><p>Ostatnie z W aparacie władzy</p></div>
+
+  <!-- start: Portfolio -->
+  <div id="wall" class="row-fluid extra-wall photo">
+
+    <% @photos.each do |photo| %>
+      <%= render '/shared/show_photo', :item => photo %>
+    <% end %>
+
+  </div>
+
+  <!-- Botón Todos los Fotomandón
+  <div class="all-btn row-fluid">
+    <a href="#" title="Todos los Fotomandón">Todos los Fotomandón</a>
+  </div>
+  -->
+  <!-- end: Portfolio -->
+
+</div>
+<!-- end: Wrapper  -->
+
+<script>
+$(function () {
+
+  $('#flex1').flexslider();
+
+});
+</script>

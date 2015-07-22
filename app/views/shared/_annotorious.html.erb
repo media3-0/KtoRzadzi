@@ -1,0 +1,34 @@
+<%#
+# We can't use the Rails include helper for these two scripts: we keep them outside
+# the Rails asset pipeline so they can be referenced from the photo widget.
+# (So beware when changing them, as they may be cached. Safer to add a version number.)
+%>
+<%= javascript_include_tag "/javascripts/annotorious/annotorious.min.js" %>
+<%= javascript_include_tag "/javascripts/annotorious/anno-rest-storage-plugin.js" %>
+<%#
+# The minimized version of Annotorious breaks the $ jQuery object, which creates havoc
+# with other Javascript code, so be careful. Trying to restore jQuery ($=jQuery) breaks
+# the plugin in a strange way
+%>
+<script>
+jQuery(function() {
+  anno.addPlugin('RESTStorage', {
+                    base_url: '<%= "/photos/#{photo.id}/annotations" %>',
+                    read_only: <%= (can? :manage, photo) ? 'false' : 'true' %>
+                  });
+
+  // This is needed only for the widget, but doesn't bother us in the main app, so...
+  imagesLoaded( document.getElementById('photo'), function( instance ) {
+    anno.makeAnnotatable(document.getElementById('photo'));
+  });
+});
+</script>
+<%# This is not a secure way of avoiding edits, but the real check is in the controller %>
+<% if not can? :manage, photo %>
+<style>
+  .annotorious-popup-button-edit,
+  .annotorious-popup-button-delete {
+    display: none;
+  }
+</style>
+<% end %>

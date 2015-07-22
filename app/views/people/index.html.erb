@@ -1,0 +1,25 @@
+<!-- start: Page Title -->
+<div id="page-title" class="people">
+
+  <h2>Osoby</h2>
+
+</div>
+<!-- end: Page Title -->
+
+<!--start: Wrapper-->
+<div id="wrapper">
+  
+  <!-- start: Portfolio -->
+  <div id="wall" class="row-fluid people">
+            
+    <% @people.each do |person| %>
+      <%= render '/shared/show_person', :item => person %>
+    <% end %>
+
+  </div>
+  <!-- end: Portfolio -->
+  
+  <%= paginate @people %>
+
+</div>
+<!-- end: Wrapper  -->

@@ -1,0 +1,46 @@
+<html>
+<head>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <%= stylesheet_link_tag "/css/annotorious.css" %>
+  <style>
+    body {
+      color: #242424;
+      font-size: 14px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .picture {
+      border: 3px;
+      padding: 10px 10px 0px 10px;
+    }
+    a {
+      text-decoration: none;
+      color: #242424;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body onload="adjustIFrameHeight();">
+  <div class="span6 item">
+    <div class="picture">
+      <%= image_tag(@photo.file.url(:full), width: '100%', id: 'photo', class: 'photo annotatable') %>
+
+      <%= render 'shared/photo_footer', photo: @photo, external_link: true %>
+    </div>  
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <%= javascript_include_tag "/javascripts/jquery.imagesloaded.js" %>
+  <%= render 'shared/annotorious', photo: @photo %>
+
+  <script>
+  // http://stackoverflow.com/questions/153152/resizing-an-iframe-based-on-content
+  function adjustIFrameHeight() {
+    parent.postMessage({id: '<%= @photo.id %>', height: document.body.scrollHeight}, "*");
+    //* allows this to post to any parent iframe regardless of domain
+  }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+*.rbc
+*.sassc
+.sass-cache
+capybara-*.html
+.rspec
+/.bundle
+/vendor/bundle
+/log/*
+/tmp/*
+/db/*.sqlite3
+/public/system/*
+/coverage/
+/spec/tmp/*
+**.orig
+rerun.txt
+pickle-email-*.html
+# Ignore application configuration
+/config/application.yml
+/config/application.yml-*
+/app/tabula_v1_0_2_html/
+latest.dump
+test.csv
+.ruby-gemset

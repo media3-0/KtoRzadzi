@@ -1,0 +1,25 @@
+<!-- start: Page Title -->
+<div id="page-title" class="post">
+
+  <h2>Artykuły</h2>
+
+</div>
+<!-- end: Page Title -->
+
+<!--start: Wrapper-->
+<div id="wrapper">
+  
+  <!-- start: Portfolio -->
+  <div id="wall" class="row-fluid post">
+            
+    <% @posts.each do |post| %>
+      <%= render '/shared/show_post', :item => post %>
+    <% end %>
+
+  </div>
+  <!-- end: Portfolio -->
+  
+  <%= paginate @posts %>
+
+</div>
+<!-- end: Wrapper  -->

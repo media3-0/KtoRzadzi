@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+  - 2.0.0
+env:
+  - DB=postgresql DEVISE_SECRET=fake-just-for-CI S3_KEY=fake-just-for-CI S3_SECRET=fake-just-for-CI
+script:
+  - RAILS_ENV=test bundle exec rake --trace db:migrate spec
+before_script:
+  - psql -c 'create user qm with superuser' -U postgres
+  - psql -d template1 -c 'create extension hstore;'
+  - psql -d template1 -c 'create extension unaccent;'
+  - psql -c 'create database qm_test owner qm' -U postgres

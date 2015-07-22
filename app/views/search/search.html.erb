@@ -1,0 +1,9 @@
+<!-- start: Page Title -->
+<div id="page-title">
+
+  <h2>Wyniki dla '<%= @query %>'</h2>
+
+</div>
+<!-- end: Page Title -->
+
+<%= render '/shared/mixed_wall', items: @results.map {|r| r.searchable } %>

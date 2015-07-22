@@ -1,0 +1,19 @@
+<!--start: Wrapper-->
+<div id="wrapper" class="<%= extra_wrapper_css unless not defined? extra_wrapper_css %>">
+  
+  <!-- start: Portfolio -->
+  <div id="wall" class="row-fluid mixed">
+            
+    <% items.each do |item| %>
+      <% if item %>
+        <%= render partial_name(item), :item => item %>
+      <% end %>
+    <% end %>
+
+  </div>
+  <!-- end: Portfolio -->
+  
+  <%= paginate items if items.respond_to? :current_page %>
+
+</div>
+<!-- end: Wrapper  -->

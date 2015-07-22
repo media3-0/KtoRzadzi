@@ -1,0 +1,84 @@
+<!-- start: Page Title -->
+<div id="page-title" class="people single">
+
+  <h2><%= entity.short_or_long_name %></h2>
+
+</div>
+<!-- end: Page Title -->
+<div class="sharing-right">
+  <%# render 'shared/social_buttons' %>
+</div>
+
+<div id="wrapper" class="people">
+
+  <div class="row-fluid">
+
+    <div id="wrapper" class="full span3">   <center>
+      <div class="picture "><%= image_tag(entity.avatar.url ? entity.avatar.url : 'avatar.png', class: 'image profile_image') %></div>
+      <p class="title nobackground"><%= entity.name %></p>
+      <p class="description"><%= entity.description %></p>
+
+      <% if entity.club_name %>
+        <p><strong>Klub:</strong> <%= entity.club_name %></p>
+      <% end %>
+      <% if entity.age %>
+        <p><strong>Wiek:</strong> <%= entity.age %> lat</p>
+      <% end %>
+      <% if entity.occupation %>
+        <p><strong>Zawód:</strong> <%= entity.occupation %></p>
+      <% end %>
+      <% if entity.attendance %>
+        <p><strong>Frekwencja:</strong> <%= entity.attendance %>%</p>
+      <% end %>
+
+      <%= render '/shared/needs_work' if entity.needs_work %>
+      <div class='entity-links'>
+        <ul>
+          <li><%= icon_link entity.web_page, 'link' %></li>
+          <li><%= icon_link entity.wikipedia_page, 'wikipedia' %></li>
+          <li><%= icon_link entity.twitter_handle, 'twitter' %></li>
+          <li><%= icon_link entity.facebook_page, 'facebook' %></li>
+          <li><%= icon_link entity.open_corporates_page, 'link' %></li>
+          <li><%= icon_link entity.flickr_page, 'flickr' %></li>
+          <li><%= icon_link entity.youtube_page, 'youtube' %></li>
+          <li><%= icon_link entity.linkedin_page, 'linkedin' %></li>
+        </ul>
+      </div>
+      <%= render 'shared/show_admin_links', item: entity %>
+    </div>
+</center>
+
+
+    <div id="wrapper" class="full span9">
+      <%= render 'shared/show_relation_visualizations', entity: entity %>
+    </div>
+
+    <div class="export-container full span9">
+      <span id="embed-code-toggle" class="label toggable active" data-toggle="collapse" data-target="#embed-code">
+        <span class="show-active"><i class="icon-chevron-down"></i> Osadź wizualizację na stronie</span>
+        <span class="show-inactive"><i class="icon-chevron-up"></i> Umieść ten kod na stronie</span>
+      </span>
+      <div id="embed-code" class="collapse">
+        <div class="alert alert-info">
+          <%= @embed %>
+       </div>
+     </div>
+
+      <% javascript_include_tag 'svg_render' %>
+      <% stylesheet_link_tag 'svg_renders' %>
+
+       <span id="render-relations-toggle" class="label hand">
+         <span class="show-active"><i class="icon-chevron-down"></i> Generuj obraz jpg przedstawiający relacje</span>
+       </span>
+       <div id="render-relations" class="x-collapse">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "shared/relations_list", :list => @relations %>
+
+<%= render '/shared/mixed_wall',
+            items: entity.related_posts+entity.related_photos,
+            extra_wrapper_css: 'tight' %>

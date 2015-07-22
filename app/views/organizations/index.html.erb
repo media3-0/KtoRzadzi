@@ -1,0 +1,25 @@
+<!-- start: Page Title -->
+<div id="page-title" class="organizations">
+
+  <h2>Organizacje</h2>
+
+</div>
+<!-- end: Page Title -->
+
+<!--start: Wrapper-->
+<div id="wrapper">
+  
+  <!-- start: Portfolio -->
+  <div id="wall" class="row-fluid organization">
+            
+    <% @organizations.each do |organization| %>
+      <%= render '/shared/show_organization', :item => organization %>
+    <% end %>
+
+  </div>
+  <!-- end: Portfolio -->
+
+  <%= paginate @organizations %>
+  
+</div>
+<!-- end: Wrapper  -->
