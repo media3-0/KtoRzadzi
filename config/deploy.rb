@@ -1,7 +1,7 @@
 lock '3.3.5'
 
 set :application, 'app'
-set :repo_url, 'git@bitbucket.org:marcinbiegun/ktorzadzi.git'
+set :repo_url, 'https://github.com/media3-0/KtoRzadzi.git'
 
 ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 

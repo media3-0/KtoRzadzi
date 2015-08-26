@@ -1,23 +1,26 @@
 set :port, 22
 set :user, 'app'
-set :deploy_via, :remote_cache
+#set :deploy_via, :remote_cache
 set :use_sudo, false
 
 set :branch, 'master'
+
+ask(:password, nil, echo: false)
 
 server 'ktorzadzi.pl',
   roles: [:web, :app, :db],
   port: fetch(:port),
   user: fetch(:user),
+  password: fetch(:password),
   primary: true
 
 set :deploy_to, "/home/#{fetch(:user)}/#{fetch(:application)}"
 
-set :ssh_options, {
-  forward_agent: true,
-  auth_methods: %w(publickey),
-  user: 'app',
-}
+# set :ssh_options, {
+#   forward_agent: true,
+#   auth_methods: %w(publickey),
+#   user: 'app',
+# }
 
 set :rails_env, :production
 set :conditionally_migrate, true
