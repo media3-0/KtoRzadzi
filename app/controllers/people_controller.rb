@@ -23,7 +23,7 @@ class PeopleController < ApplicationController
   # GET /people/1.json
   def show
     authorize! :read, @person
-    if stale?(@people, :public => current_user.nil?)
+    if stale?(@people, :public => true)#, :public => current_user.nil?)
       @title = @person.short_or_long_name
       @relations = []
       if(can? :manage, Entity)
