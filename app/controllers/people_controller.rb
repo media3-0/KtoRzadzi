@@ -11,7 +11,7 @@ class PeopleController < ApplicationController
     if stale?(last_modified: @people.maximum(:updated_at), :public => current_user.nil?)
       #@people = @people.order("updated_at DESC").page(params[:page]).per(12)
 
-      @people = @people.joins(:relations_as_target)
+      @people = @people.joins(:relations_as_source)
                 .select('entities.*, count(relations.id) as relations_count')
                 .group('entities.id')
                 .order('relations_count DESC')
