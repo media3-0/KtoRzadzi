@@ -8,7 +8,7 @@ class PeopleController < ApplicationController
   def index
     @title = 'Osoby'
     @people = (can? :manage, Entity) ? Entity.people : Entity.people.published
-    if stale?(last_modified: @people.maximum(:updated_at), :public => true)#:public => current_user.nil?)
+    if stale?(last_modified: @people.maximum(:updated_at), :public => current_user.nil?)
       #@people = @people.order("updated_at DESC").page(params[:page]).per(12)
 
       @people = @people.joins(:relations_as_target)
@@ -23,7 +23,7 @@ class PeopleController < ApplicationController
   # GET /people/1.json
   def show
     authorize! :read, @person
-    if stale?(@person, :public => true)#, :public => current_user.nil?)
+    if stale?(@person, :public => current_user.nil?)
       @title = @person.short_or_long_name
       @relations = []
       if(can? :manage, Entity)
