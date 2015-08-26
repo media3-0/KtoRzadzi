@@ -2,8 +2,8 @@ class SvgRendersController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   DIR = "#{Rails.root}/public/uploads/relation/"
-  SVG_DIR = "#{DIR}/svg"
-  JPG_DIR = "#{DIR}/jpg"
+  SVG_DIR = "#{DIR}svg"
+  JPG_DIR = "#{DIR}jpg"
 
   def create
     require 'fileutils'
@@ -17,13 +17,13 @@ class SvgRendersController < ApplicationController
     uuid = SecureRandom.uuid
     svg_path = "#{SVG_DIR}/#{uuid}.svg"
     File.open(svg_path, 'w') do |file|
-      file.write svg_param
+      file.write svg_param.gsub('{root}', Rails.root.to_s)
     end
     errors = svg_to_jpg uuid
 
     
     if errors == ""
-      render json: {url: "#{root_url}/uploads/relation/jpg/#{uuid}.jpg"}
+      render json: {url: "#{root_url}uploads/relation/jpg/#{uuid}.jpg"}
     else
       render json: {errors: errors}
     end

@@ -9,7 +9,13 @@ class PeopleController < ApplicationController
     @title = 'Osoby'
     @people = (can? :manage, Entity) ? Entity.people : Entity.people.published
     if stale?(last_modified: @people.maximum(:updated_at), :public => current_user.nil?)
-      @people = @people.order("updated_at DESC").page(params[:page]).per(12)
+      #@people = @people.order("updated_at DESC").page(params[:page]).per(12)
+
+      @people = @people.joins(:relations_as_target)
+                .select('entities.*, count(relations.id) as relations_count')
+                .group('entities.id')
+                .order('relations_count DESC')
+                .page(params[:page]).per(12)
     end
   end
 

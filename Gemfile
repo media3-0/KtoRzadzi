@@ -114,6 +114,9 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'capistrano3-unicorn'
+
+  gem 'better_errors'
+  gem 'quiet_assets'
 end
 
 gem 'whenever', :require => false

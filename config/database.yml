@@ -1,8 +1,8 @@
 development:
   adapter: postgresql
   database: ktorzadzi_dev
-  username: postgres
-  password: feblaisak01
+  username: qm
+  password: ""
   host: localhost
   min_messages: ERROR
   reconnect: false
@@ -25,7 +25,7 @@ profile:
 test:
   adapter: postgresql
   database: ktorzadzi_test
-  username: n23
+  username: qm
   password:
   host: localhost
   min_messages: ERROR

@@ -41,6 +41,10 @@ GEM
     addressable (2.3.6)
     arel (4.0.2)
     bcrypt (3.1.7)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
     builder (3.1.4)
     cancan (1.6.10)
     capistrano (3.3.5)
@@ -182,6 +186,8 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -320,6 +326,7 @@ PLATFORMS
 DEPENDENCIES
   actionpack-action_caching
   acts-as-taggable-on
+  better_errors
   cancan
   capistrano-rails
   capistrano-rvm
@@ -352,6 +359,7 @@ DEPENDENCIES
   pg_search
   polskie_stringi
   pry-rails
+  quiet_assets
   rack-cache
   rails (~> 4.0.0)
   rails-i18n (~> 4.0.0.pre)
@@ -370,3 +378,6 @@ DEPENDENCIES
   unicorn
   webmock
   whenever
+
+BUNDLED WITH
+   1.10.6

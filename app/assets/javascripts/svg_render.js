@@ -10,13 +10,14 @@ $(document).ready(function() {
       return;
     }
     $("#render-relations").show();
-    var svg = $("#viz-container");//.html();
-    
-    svg.find("defs").prepend('<style type="text/css"><![CDATA[ path.link { marker-end: none; fill: none; stroke: #999; stroke-width: 2px; } ]]></style>');
+    var panel = $("#viz-container");//.html();
+
+      //panel.find("defs").prepend('<style type="text/css"><![CDATA[ path.link { marker-end: none; fill: none; stroke: #999; stroke-width: 2px; } ]]></style>');
     var pos = $("<div class='alert alert-info'>").text("Generowanie...");
     $("#render-relations").append(pos);
+      var svg = $("#viz-container svg");
     $.post("/svg_renders",
-      {svg: svg.html()},
+      {svg: remapHrefs(svg[0].outerHTML, '{root}/public')},
       function(data){
         var content;
         if(data['url']){
@@ -34,3 +35,13 @@ $(document).ready(function() {
       'json');
   });
 });
+
+function remapHrefs(svgEl, pathPrefix){
+    var el = $(svgEl).clone();
+    $(el).find('image').each(function(){
+        var _oldPath = $(this)[0].getAttributeNS('http://www.w3.org/1999/xlink', 'href');
+        $(this)[0].setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', pathPrefix + _oldPath);
+    });
+    console.log(el[0].outerHTML);
+    return el[0].outerHTML;
+}

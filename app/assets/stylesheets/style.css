@@ -2873,4 +2873,8 @@ a.buy:hover {
     margin-top: -0px !important;
   }
     
-} 
+}
+
+#wrapper .sidebar.span4 #related-entities-toggle {
+    color: black;
+}
