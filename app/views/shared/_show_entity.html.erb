@@ -18,7 +18,7 @@
       <p class="title nobackground"><%= entity.name %></p>
       <p class="description"><%= entity.description %></p>
 
-      <% if entity.club_name %>
+      <!-- <% if entity.club_name %>
         <p><strong>Klub:</strong> <%= entity.club_name %></p>
       <% end %>
       <% if entity.age %>
@@ -29,7 +29,7 @@
       <% end %>
       <% if entity.attendance %>
         <p><strong>Frekwencja:</strong> <%= entity.attendance %>%</p>
-      <% end %>
+      <% end %> -->
 
       <%= render '/shared/needs_work' if entity.needs_work %>
       <div class='entity-links'>
