@@ -7,6 +7,7 @@ class RelationVisualizationsController < ApplicationController
       @title = @entity.short_or_long_name
       @relations = (can? :manage, Entity) ? @entity.relations : @entity.relations.published
     end
+    response.headers.except! 'X-Frame-Options'
   end
 
   private
