@@ -104,6 +104,9 @@ text {
 /* Infobox */
 #infobox {
   font-size: 14px;
+  position: absolute;
+  bottom: 14px;
+  left: 18px;
 }
 #infobox i {
   margin-left: 5px;

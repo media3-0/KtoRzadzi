@@ -39,8 +39,6 @@ Quienmanda::Application.routes.draw do
   resources :relation_visualizations, only: [:show]
   resources :svg_renders, only: [:create]
 
-  resources :relation_visualizations, only: [:show]
-
   # We add this route just so ShowInApp works in Rails Admin
   resources :entities, only: [:show]
 
