@@ -16,7 +16,7 @@ function NetworkGraph(selector, infobox) {
   var infobox = d3.select(infobox);
 
   // I keep track of panning+zooming and use the 'drag' behaviour plus two buttons.
-  // The mousewheel behaviour of the 'zoom' behaviour was annoying, and couldn't 
+  // The mousewheel behaviour of the 'zoom' behaviour was annoying, and couldn't
   // find a way of disabling it.
   var scale = 1;
   var viewport_origin_x = 0;
@@ -29,7 +29,7 @@ function NetworkGraph(selector, infobox) {
       .attr("height", height)
       .call(d3.behavior.drag().on("drag", onDrag))
       .append("g");   // Removing this breaks zooming/panning
-      
+
   svg.append("image")
     .attr("xlink:href", "/images/ktorzadzistopka.png")
     .attr("x", 5)
@@ -178,7 +178,7 @@ function NetworkGraph(selector, infobox) {
     var spinner = showSpinner();
 
     // Adding '.json' is not strictly necessary, since Rails and jQuery will understand
-    // the Content Type headers of the request. But the Rails cache is mixing up the 
+    // the Content Type headers of the request. But the Rails cache is mixing up the
     // HTML and JSON responses, so the quickest way of fixing that is making sure the
     // request URLs are different.
     console.log(url);
@@ -288,7 +288,7 @@ function NetworkGraph(selector, infobox) {
             (node['expanded'] ? "node expanded" : "node") );
   }
 
-  // When load a node, put the related nodes randomly in a circle around 
+  // When load a node, put the related nodes randomly in a circle around
   // the existing one to avoid the dizzying start where all the nodes fly around.
   function presetNode(node, posx, posy) {
     if (node['root']) {
@@ -343,7 +343,7 @@ function NetworkGraph(selector, infobox) {
   // Node click handler
   function onNodeClick(d) {
     if (d3.event.defaultPrevented) return;  // click suppressed
-    
+
     if($(this).attr('selectable')){
       $(this).removeAttr('selectable');
       $(this).attr('selected', true);
@@ -359,7 +359,7 @@ function NetworkGraph(selector, infobox) {
         }
       })
     }
-  
+
     // Check if expand or contract
     else if ( d['expandable'] ) {
       d['expandable'] = false;                // Not anymore expandable
@@ -430,7 +430,7 @@ function NetworkGraph(selector, infobox) {
 
     // Display sources
     if ( link.via.length > 0 ) {
-      sources = infobox.append('span').attr('class', 'sources').text('Fuente: ');
+      sources = infobox.append('span').attr('class', 'sources').text('Źródło: ');
       sources.selectAll('.via').data(link.via)
         .enter().append('a')
           .attr('target', '_blank')
