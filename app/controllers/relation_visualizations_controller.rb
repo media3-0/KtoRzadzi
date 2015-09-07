@@ -3,7 +3,7 @@ class RelationVisualizationsController < ApplicationController
 
   def show
     authorize! :read, @entity
-    response.headers.except! 'X-Frame-Options'
+    #response.headers.except! 'X-Frame-Options'
     if stale?(@entities, :public => current_user.nil?)
       @title = @entity.short_or_long_name
       @relations = (can? :manage, Entity) ? @entity.relations : @entity.relations.published
