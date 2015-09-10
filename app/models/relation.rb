@@ -64,7 +64,7 @@ class Relation < ActiveRecord::Base
       puts "    created relation #{relation.id}"
     end
 
-    relation.published = true
+    relation.published = false
     relation.from = from
     relation.to = to
     relation.save!
@@ -73,6 +73,6 @@ class Relation < ActiveRecord::Base
   def self.normalize(string)
     string.downcase.strip.split(" ").map(&:capitalize).join(" ")
   end
-  
-  
+
+
 end
