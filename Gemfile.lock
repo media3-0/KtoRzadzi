@@ -358,6 +358,7 @@ DEPENDENCIES
   pg
   pg_search
   polskie_stringi
+  pry
   pry-rails
   quiet_assets
   rack-cache
