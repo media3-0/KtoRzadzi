@@ -64,7 +64,7 @@ class Relation < ActiveRecord::Base
       puts "    created relation #{relation.id}"
     end
 
-    relation.published = false
+    relation.published = true
     relation.from = from
     relation.to = to
     relation.save!
