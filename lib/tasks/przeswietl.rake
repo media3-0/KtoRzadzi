@@ -2,7 +2,7 @@ namespace :przeswietl do
   desc "Imports data from przeswietl.pl"
 
   task import_missing_pesels: :environment do
-    binding.pry
+    #binding.pry why is it here? -.-'
     ImportPersonData.new.import_missing_pesels
   end
 
