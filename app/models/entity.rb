@@ -25,7 +25,7 @@ class Entity < ActiveRecord::Base
   # Priorities
   PRIORITIES = [PRIORITY_HIGH = '1', PRIORITY_MEDIUM = '2', PRIORITY_LOW = '3']
   def priority_enum
-    [ [ 'High', PRIORITY_HIGH ], [ 'Medium', PRIORITY_MEDIUM ], [ 'Low', PRIORITY_LOW ] ]
+    [ [ 'Wysoki', PRIORITY_HIGH ], [ 'Średni', PRIORITY_MEDIUM ], [ 'Niski', PRIORITY_LOW ] ]
   end
 
   validates :name, presence: true, uniqueness: true
@@ -38,9 +38,9 @@ class Entity < ActiveRecord::Base
   scope :with_pesel, -> { where("pesel IS NOT NULL AND pesel != ''") }
   scope :without_pesel, -> { where("pesel IS NULL OR pesel = ''") }
   scope :without_krs, -> { where("krs IS NULL OR krs = ''") }
-  
+
   after_destroy :delete_nil_relations
-  
+
   def delete_nil_relations
     self.relations.each do |r|
       if r.target.nil? || r.source.nil?
