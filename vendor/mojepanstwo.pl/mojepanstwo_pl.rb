@@ -2,7 +2,7 @@ require 'json'
 require 'open-uri'
 
 module Mojepanstwo_pl class Mojepanstwo_pl
-  API_URL = 'http://api-v3.mojepanstwo.pl'
+  API_URL = 'https://api-v3.mojepanstwo.pl'
 
   def self.get path, params={}
     url = make_url path, params
