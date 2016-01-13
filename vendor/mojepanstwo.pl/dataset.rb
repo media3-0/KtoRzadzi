@@ -11,6 +11,7 @@ module Mojepanstwo_pl class Dataset
       dataobjects += part_result['Dataobject']
       page += 1
     end while page <= (total / 500.0).ceil
+    print "Pobrano poslow: #{dataobjects.length}"
     dataobjects
   end
 
