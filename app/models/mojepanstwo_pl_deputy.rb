@@ -30,7 +30,11 @@ class MojepanstwoPlDeputy < ActiveRecord::Base
   def mojepanstwo_photo_url
     full_url = Net::HTTP.get_response(URI(_mpurl)).to_hash["location"].first
     html = Net::HTTP.get(URI(full_url))
-    Nokogiri::XML(html).css('.objectRender .thumb_cont img.thumb').first["src"]
+    img_url = Nokogiri::XML(html).css('img.thumb')
+    return false if img_url.count == 0
+    url = img_url.first["src"]
+    url.sub! '/a/2', '/a/0'
+    url
   end
 
   private
