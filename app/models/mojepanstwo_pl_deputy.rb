@@ -14,7 +14,6 @@ class MojepanstwoPlDeputy < ActiveRecord::Base
     Mojepanstwo_pl::Poslowie.get.each do |mp_deputy|
       deputy = find_or_initialize_by id: mp_deputy['id']
       deputy.update_attributes dataset_translate mp_deputy
-      puts deputy.nazwisko
     end
   end
 
@@ -38,8 +37,8 @@ class MojepanstwoPlDeputy < ActiveRecord::Base
 
   def self.dataset_translate mp_object
     { 'id'     => mp_object['id'],
-      '_id'    => mp_object['_id'],
-      '_mpurl' => mp_object['_mpurl'],
+      '_id'    => mp_object['url'],
+      '_mpurl' => mp_object['mp_url'],
       'sejm_kluby_nazwa' => mp_object['data']['sejm_kluby.nazwa'],
       'sejm_kluby_skrot' => mp_object['data']['sejm_kluby.skrot'],
       'mandat_wygasl'    => mp_object['data']['poslowie.mandat_wygasl'].to_i == 1,
