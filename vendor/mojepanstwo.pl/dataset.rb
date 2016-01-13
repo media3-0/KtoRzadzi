@@ -7,10 +7,10 @@ module Mojepanstwo_pl class Dataset
     dataobjects = []
     begin
       part_result = Mojepanstwo_pl::get "dane/#{dataset}.json", params.merge(page: page)
-      total ||= part_result['Dataobject'].length
+      total ||= part_result['Count']
       dataobjects += part_result['Dataobject']
       page += 1
-    end while page <= (total / 20.0).ceil
+    end while page <= (total / 500.0).ceil
     dataobjects
   end
 
