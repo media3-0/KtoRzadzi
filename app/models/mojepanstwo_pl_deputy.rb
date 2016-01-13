@@ -12,9 +12,9 @@ class MojepanstwoPlDeputy < ActiveRecord::Base
   def self.import_all
     require "#{Rails.root}/vendor/mojepanstwo.pl/poslowie.rb"
     Mojepanstwo_pl::Poslowie.get.each do |mp_deputy|
-      print mp_deputy['slug']
       deputy = find_or_initialize_by id: mp_deputy['id']
       deputy.update_attributes dataset_translate mp_deputy
+      puts deputy.nazwisko
     end
   end
 
