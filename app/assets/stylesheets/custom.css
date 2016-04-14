@@ -1843,6 +1843,7 @@ body>header{
 	.scrollHeader .navbar .nav{
 		left: 138px;
 		top: 24px;
+		width: 100%;
 	}
 
 	.navbar .nav > li > a{
@@ -1856,7 +1857,7 @@ body>header{
 	}
 
 	.scrollHeader #custom-search-form{
-		margin-right: 119px;
+		margin-right: -10px;
 		margin-top: 24px;
 	}
 }
@@ -1955,7 +1956,7 @@ body>header{
 	}
 
 	.scrollHeader #custom-search-form{
-		margin-right: 14px;
+		margin-right: 128px;
 		margin-top: 24px;
 	}
 	#wrapper.people .full.span9{
