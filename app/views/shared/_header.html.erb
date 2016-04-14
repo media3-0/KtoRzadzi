@@ -16,6 +16,7 @@
               <li class="<%= 'active' if controller.controller_name == 'people' %>"><%= link_to 'Osoby', people_path %></li>
               <li class="<%= 'active' if controller.controller_name == 'organizations' %>"><%= link_to 'Organizacje', organizations_path %></li>
               <li class="<%= 'active' if controller.controller_name == 'welcome' %>"><%= link_to 'O nas', o_nas_path %></li>
+              <li> <a href = "http://ktorzadzi.pl/finanse-poslow/">Kasa posłów</a></li>
             </ul>
             <%= form_tag search_path, :id => 'custom-search-form',
                                         :class => 'form-search form-horizontal pull-right',
